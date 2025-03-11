@@ -2,8 +2,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: ctranstrum # <-- add this for the keyboard
-      url-base: https://github.com/ctranstrum
+    - name: framarbon # <-- add this for the keyboard
+      url-base: https://github.com/framarbon
     - name: caksoylar # <-- and this for the LED
       url-base: https://github.com/caksoylar
   projects:
@@ -12,7 +12,7 @@ manifest:
       revision: main
       import: app/west.yml
     - name: lintilla # <-- add this for the keyboard
-      remote: ctranstrum
+      remote: framarbon
       revision: zmk
     - name: zmk-rgbled-widget # <-- and this for the LED
       remote: caksoylar
