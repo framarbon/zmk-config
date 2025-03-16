@@ -1,8 +1,24 @@
 include:
+  # Lintilla Dongle (optional)
+  - board: nice_nano_v2
+    shield: lintilla_dongle dongle_display
+    snippet: studio-rpc-usb-uart
+    artifact-name: lintilla-dongle
+
+  # Lintilla left can either be a central (no dongle) or peripheral (with dongle)
   - board: seeeduino_xiao_ble
     shield: lintilla_left_central rgbled_adapter
     snippet: studio-rpc-usb-uart
-    artifact-name: lintilla-left
+    artifact-name: lintilla-left-central
+  - board: seeeduino_xiao_ble
+    shield: lintilla_left_peripheral rgbled_adapter
+    artifact-name: lintilla-left-peripheral
+
+  # Lintilla right will always be a peripheral
   - board: seeeduino_xiao_ble
     shield: lintilla_right_peripheral rgbled_adapter
-    artifact-name: lintilla-right
+    artifact-name: lintilla-right-peripheral
+
+  # Reset Xiao boards
+  - board: seeeduino_xiao_ble
+    shield: settings_reset
