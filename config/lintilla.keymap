@@ -13,6 +13,7 @@
 // Personal includes
 #define HOST_OS 1
 #include "zmk-helpers/helper.h"
+
 // Source unicode-chars for desired languages
 #include "zmk-helpers/unicode-chars/german.dtsi"
 #include "includes/settings.dtsi"

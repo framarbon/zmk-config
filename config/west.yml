@@ -16,6 +16,9 @@ manifest:
     - name: zmk-helpers
       remote: urob
       revision: main
+    - name: zmk-adaptive-key
+      remote: urob
+      revision: main
     - name: lintilla # <-- add this for the keyboard
       remote: framarbon
       revision: zmk
