@@ -2,16 +2,16 @@ layout: {zmk_keyboard: lintilla}
 layers:
   Colemak DH:
   - - '&lp_mc'
-    - {t: MUTE, h: keyboard}
+    - {t: DEL, h: keyboard}
     - {t: ESCAPE, h: LGUI, s: '`'}
     - Q
     - W
-    - {t: F, h: MY HYPER}
+    - F
     - P
     - B
     - J
     - L
-  - - {t: U, h: MY HYPER}
+  - - U
     - Y
     - ;
     - '|'
@@ -29,7 +29,7 @@ layers:
     - {t: RSHFT, h: sticky, s: '&caps_word'}
     - Z
     - X
-    - {t: C, h: MY MEH}
+    - C
     - D
   - - V
     - K
@@ -37,12 +37,12 @@ layers:
     - {t: ',', s: .}
     - '-'
     - /
-    - {t: SPACE, h: function}
+    - {t: SPACE, h: numpad}
     - {t: SPACE, h: symbols}
-    - {t: BSPC, s: DEL}
     - RETURN
-  - - {t: SPACE, h: numpad}
-    - {t: '&shift_repeat', h: LSHFT, s: '&caps_word'}
+    - {t: BSPC, s: DEL}
+  - - {t: SPACE, h: navigation}
+    - '&magic_shift LSHFT 0'
   QWERTY:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -87,64 +87,45 @@ layers:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   numpad:
-  - ['', DEL, '', '', '', '', '', '', /, '7']
-  - - '8'
-    - '9'
-    - '-'
-    - BSPC
-    - GLOBE
-    - {t: Ctl+A, h: LSHFT}
-    - LCTL
-    - {t: Ctl+D, h: LALT}
-    - LGUI
-    - RALT
-  - ['*', '4', '5', '6', +, RET, Ctl+Z, Ctl+X, Ctl+C, Ctl+V]
-  - - ''
+  - ['', '', '', Ctl+Q, Ctl+W, Ctl+F, Ctl+P, '', /, '7']
+  - ['8', '9', '-', BSPC, GLOBE, Ctl+A, Ctl+R, Ctl+S, Ctl+T, LSHFT]
+  - ['*', '4', '5', '6', +, RET, Ctl+Z, Ctl+X, Ctl+C, Ctl+D]
+  - - Ctl+V
     - ':'
     - '1'
     - '2'
     - '3'
     - '='
+    - {type: held}
     - {t: ▽, type: trans}
-    - numpad
-    - ''
+    - {t: ▽, type: trans}
     - ','
-  - - {t: SPC, type: held}
-    - '0'
+  - [SPC, '0']
   navigation:
-  - ['', '', '', '', '', '', '', '', PG UP, '']
-  - - DEL
-    - ''
-    - ''
-    - ''
-    - GLOBE
-    - {t: Ctl+A, h: LSHFT}
-    - LGUI
-    - LSHFT
-    - LCTL
-    - RALT
-  - [HOME, LEFT, UP, RIGHT, END, '', Ctl+Z, Ctl+X, Ctl+C, Ctl+V]
-  - - ''
+  - ['', '', '', Ctl+Q, Ctl+W, Ctl+F, Ctl+P, '', PG UP, '']
+  - [DEL, '', '', '', GLOBE, Ctl+A, Ctl+R, Ctl+S, Ctl+T, LSHFT]
+  - [HOME, LEFT, UP, RIGHT, END, '', Ctl+Z, Ctl+X, Ctl+C, Ctl+D]
+  - - Ctl+V
     - PG DN
     - ''
     - DOWN
     - ''
     - ''
-    - QWERTY
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  - - {t: SPC, type: held}
-    - ''
+    - {t: ▽, type: trans}
+  - - {type: held}
+    - {t: ▽, type: trans}
   symbols:
   - ['', '', <, '!', '@', '#', $, '%', ^, '&']
-  - ['*', '', '*', '>', '''', '1', '2', '3', '4', '5']
-  - ['6', '7', '8', '9', '0', DOUBLE QUOTE, '[', '&kb LBRC', _, '-']
+  - ['*', '{', '}', '>', '''', '1', '2', '3', '4', '5']
+  - ['6', '7', '8', '9', '0', '"', '[', '{', _, '-']
   - - ','
-    - '&kb DOT'
-    - '&kb PLUS'
-    - '&kb EQUAL'
-    - '&kb RBRC'
+    - .
+    - +
+    - '='
+    - '}'
     - ']'
     - {t: ▽, type: trans}
     - {type: held}
@@ -162,7 +143,7 @@ layers:
     - F2
     - F3
     - ''
-    - {type: held}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - ''
     - F12
