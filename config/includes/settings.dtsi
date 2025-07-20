@@ -39,6 +39,7 @@
       RCTRL RALT RGUI RSHFT
       BACKSPACE
     >;
+    mods = <(MOD_LSFT)>;
     #ifdef HAS_UROB
         /delete-property/ ignore-modifiers;
     #endif

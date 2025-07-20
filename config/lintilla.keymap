@@ -55,9 +55,6 @@ ZMK_ADAPTIVE_KEY(
       max-prior-idle-ms = <1200>;
       strict-modifiers;
     };)
-&caps_word { // Mods deactivate caps-word, requires PR #1451. [TODO: rebase]
-  /delete-property/ ignore-modifiers;
-};
 
 / {
     behaviors {
@@ -162,7 +159,7 @@ ZMK_ADAPTIVE_KEY(
 //                          ╭────────────────────────╮                                                                                                                                                                                                           ╭────────────────────────╮
                               &lp_mc                                                                                                                                                                                                                                &lt KEYB DEL                                                
 // ╭────────────────────────┼────────────────────────┼────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮    ╭────────────────────────┬────────────────────────┬────────────────────────┬───────────────────────┼────────────────────────┼────────────────────────╮
-     &mm_grescm_gui           &kp Q                    &kp W                    &kp F                    &kp P                    &kp B                         &kp J                    &kp L                    &kp U                    &kp Y                   &kp SEMICOLON            &kp PIPE
+     &kp ESC                  &kp Q                    &kp W                    &kp F                    &kp P                    &kp B                         &kp J                    &kp L                    &kp U                    &kp Y                   &kp SEMICOLON            &kp PIPE
 // ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────┤
      &kp TAB                  &hm_l LGUI A             &hm_l LALT R             &hm_shift_l LSHFT S      &hm_l LCTRL T            &kp G                         &kp M                    &hm_r RCTRL N            &hm_shift_r RSHFT E      &hm_r RALT I            &hm_r RGUI O             &mm_shift_caps_word_r
 // ╰────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────╯
@@ -202,8 +199,8 @@ ZMK_ADAPTIVE_KEY(
 // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃ Pg Up ┃       ┃  DEL  ┃       ┃       ┃       ┃
 &none &kp LC(Q) &kp LC(W) &kp LC(F) &kp LC(P) &none                           &kp PG_UP &none   &kp DEL &none   &none   &none
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
-// ┃       ┃ CtrlA ┃ CtrlR ┃ CtrlS ┃ CtrlT ┃ LSHFT ┃                          ┃ Home  ┃ Left  ┃  Up   ┃ Right ┃  End  ┃       ┃
-&none &kp LC(A) &kp LC(R) &kp LC(S) &kp LC(T) &kp LSHFT                        &kp HOME &kp LEFT &kp UP &kp RIGHT &kp END &none
+// ┃       ┃ LGUI  ┃  LALT ┃ LSHFT ┃ LCTRL ┃ none  ┃                          ┃ Home  ┃ Left  ┃  Up   ┃ Right ┃  End  ┃       ┃
+&kp TAB &kp LGUI &kp LALT &kp LSHFT &kp LCTRL &none                           &kp HOME &kp LEFT &kp UP &kp RIGHT &kp END &none
 // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
 //         ┃ CtrlZ ┃ CtrlX ┃ CtrlC ┃ CtrlD ┃ CtrlV ┃                          ┃ Pg Dn ┃       ┃ Down  ┃       ┃       ┃
