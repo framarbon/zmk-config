@@ -45,16 +45,8 @@
 ZMK_HOLD_TAP(magic_shift, bindings = <&kp>, <&magic_shift_tap>;
              flavor = "balanced"; tapping-term-ms = <200>;
              quick-tap-ms = <QUICK_TAP_MS>;)
-ZMK_MOD_MORPH(magic_shift_tap, bindings = <&shift_repeat>, <&caps_word>;
+ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
               mods = <(MOD_LSFT)>;)
-ZMK_ADAPTIVE_KEY(
-    shift_repeat, bindings = <&sk LSHFT>;
-    repeat {
-      trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
-      bindings = <&key_repeat>;
-      max-prior-idle-ms = <1200>;
-      strict-modifiers;
-    };)
 
 / {
     behaviors {
@@ -76,13 +68,6 @@ ZMK_ADAPTIVE_KEY(
             bindings = <&kp>, <&kp>;
         };
 
-        lp_mc: launch_pad_mission_control {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <HYPR(N4)>, <&kp LC(UP)>;
-        };
-
         lsscw: layer_sticky_shift_caps_word {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -91,11 +76,11 @@ ZMK_ADAPTIVE_KEY(
             bindings = <&mo>, <&sscw>;
         };
 
-        mcs: mod_comma_semi {
+        mpg: mod_pipe_grave {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp SEMI>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings = <&kp PIPE>, <&kp GRAVE>;
+            mods = <(MOD_LALT|MOD_RALT)>;
         };
 
         mdc: mod_dot_colon {
@@ -109,7 +94,7 @@ ZMK_ADAPTIVE_KEY(
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp SLASH>, <&kp BACKSLASH>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LALT|MOD_RALT)>;
         };
 
         sscw: sticky_shift_caps_word {
@@ -123,8 +108,8 @@ ZMK_ADAPTIVE_KEY(
     conditional_layers {
         compatible = "zmk,conditional-layers";
         function_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
+            if-layers = <NUM SYM>;
+            then-layer = <FUNC>;
         };
     };
 
@@ -157,13 +142,13 @@ ZMK_ADAPTIVE_KEY(
 //                       ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
             bindings = <
 //                          ╭────────────────────────╮                                                                                                                                                                                                           ╭────────────────────────╮
-                              &lp_mc                                                                                                                                                                                                                                &lt KEYB DEL                                                
+                              &kp ESC                                                                                                                                                                                                                              &lt KEYB DEL                                                
 // ╭────────────────────────┼────────────────────────┼────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮    ╭────────────────────────┬────────────────────────┬────────────────────────┬───────────────────────┼────────────────────────┼────────────────────────╮
-     &kp ESC                  &kp Q                    &kp W                    &kp F                    &kp P                    &kp B                         &kp J                    &kp L                    &kp U                    &kp Y                   &kp SEMICOLON            &kp PIPE
+     &kp GRAVE                &kp Q                    &kp W                    &kp F                    &kp P                    &kp B                         &kp J                    &kp L                    &kp U                    &kp Y                   &kp SEMICOLON            &kp PIPE
 // ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────┤
      &kp TAB                  &hm_l LGUI A             &hm_l LALT R             &hm_shift_l LSHFT S      &hm_l LCTRL T            &kp G                         &kp M                    &hm_r RCTRL N            &hm_shift_r RSHFT E      &hm_r RALT I            &hm_r RGUI O             &mm_shift_caps_word_r
 // ╰────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────╯
-                              &kp Z                    &kp X                    &kp C                    &kp D                    &kp V                         &kp K                    &kp H                    &mm_comma_dot            &kp MINUS                &kp SLASH              
+                              &kp Z                    &kp X                    &kp C                    &kp D                    &kp V                         &kp K                    &kp H                    &mm_comma_dot            &kp MINUS                &mod_slash_back              
 //                          ╰────────────────────────┴────────────────────────┴────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼───────────────────────┴────────────────────────╯
                                                                                 &lt NUM SPACE           &lt SYM SPACE            &kp RETURN                     &mm_bspc_del             &lt NAV SPACE            MAGIC_SHIFT
 //                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
@@ -226,7 +211,7 @@ ZMK_ADAPTIVE_KEY(
 &none &kp LC(Q) &kp LC(W) &kp LC(F) &kp LC(P) &none                           &kp PG_UP &none   &kp DEL &none   &none   &none
 // ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫
 // ┃       ┃ LGUI  ┃  LALT ┃ LSHFT ┃ LCTRL ┃ none  ┃                          ┃ Home  ┃ Left  ┃  Up   ┃ Right ┃  End  ┃       ┃
-&kp TAB &kp LGUI &kp LALT &kp LSHFT &kp LCTRL &none                           &kp HOME &kp LEFT &kp UP &kp RIGHT &kp END &none
+&kp TAB &kp LGUI &sk LALT &sk LSHFT &sk LCTRL &none                           &kp HOME &kp LEFT &kp UP &kp RIGHT &kp END &none
 // ┃       ┃       ┃       ┃       ┃       ┃       ┃                          ┃       ┃       ┃       ┃       ┃       ┃       ┃
 // ┗━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┫                          ┣━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━╋━━━━━━━┛
 //         ┃ CtrlZ ┃ CtrlX ┃ CtrlC ┃ CtrlD ┃ CtrlV ┃                          ┃ Pg Dn ┃       ┃ Down  ┃       ┃       ┃
