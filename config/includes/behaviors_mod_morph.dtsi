@@ -163,17 +163,45 @@
         };
 
         /*
-         * Shifted comma types dot
+         * Shifted dot types comma
          *
-         * Usage: &mm_comma_dot
-         * Tap: ,
-         * Shift-Tap: .
+         * Usage: &mm_dot_comma
+         * Tap: .
+         * Shift-Tap: ,
          */
-        mm_comma_dot: mm_comma_dot {
+        mm_dot_comma: mm_dot_comma {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp DOT>;
+            bindings = <&kp DOT>, <&kp COMMA>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /*
+         * Shifted pipe types backs
+         *
+         * Usage: &mm_pipe_backs
+         * Tap: |
+         * Shift-Tap: \
+         */
+        mm_pipe_backs: mm_pipe_backs {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp PIPE>, <&kp BACKSLASH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        /*
+         * Alted slash types backslash
+         *
+         * Usage: &mm_slash_backs
+         * Tap: /
+         * Alt-Tap: \
+         */
+        mm_slash_backs: mm_slash_backs {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SLASH>, <&kp BACKSLASH>;
+            mods = <(MOD_LALT|MOD_RALT)>;
         };
 
         /*

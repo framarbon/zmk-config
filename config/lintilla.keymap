@@ -67,42 +67,6 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-
-        lsscw: layer_sticky_shift_caps_word {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&sscw>;
-        };
-
-        mpg: mod_pipe_grave {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp PIPE>, <&kp GRAVE>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        mdc: mod_dot_colon {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp COLON>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        msb: mod_slash_back {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp SLASH>, <&kp BACKSLASH>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-
-        sscw: sticky_shift_caps_word {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&sk LSHIFT>, <&caps_word>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
     };
 
     conditional_layers {
@@ -144,11 +108,11 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
 //                          ╭────────────────────────╮                                                                                                                                                                                                           ╭────────────────────────╮
                               &kp ESC                                                                                                                                                                                                                              &lt KEYB DEL                                                
 // ╭────────────────────────┼────────────────────────┼────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮    ╭────────────────────────┬────────────────────────┬────────────────────────┬───────────────────────┼────────────────────────┼────────────────────────╮
-     &kp GRAVE                &kp Q                    &kp W                    &kp F                    &kp P                    &kp B                         &kp J                    &kp L                    &kp U                    &kp Y                   &kp SEMICOLON            &kp PIPE
+     &kp GRAVE                &kp Q                    &kp W                    &kp F                    &kp P                    &kp B                         &kp J                    &kp L                    &kp U                    &kp Y                   &kp SEMICOLON            &mm_pipe_backs
 // ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────┤
      &kp TAB                  &hm_l LGUI A             &hm_l LALT R             &hm_shift_l LSHFT S      &hm_l LCTRL T            &kp G                         &kp M                    &hm_r RCTRL N            &hm_shift_r RSHFT E      &hm_r RALT I            &hm_r RGUI O             &mm_shift_caps_word_r
 // ╰────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼───────────────────────┼────────────────────────┼────────────────────────╯
-                              &kp Z                    &kp X                    &kp C                    &kp D                    &kp V                         &kp K                    &kp H                    &mm_comma_dot            &kp MINUS                &mod_slash_back              
+                              &kp Z                    &kp X                    &kp C                    &kp D                    &kp V                         &kp K                    &kp H                    &mm_dot_comma            &kp MINUS                &mm_slash_backs              
 //                          ╰────────────────────────┴────────────────────────┴────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼───────────────────────┴────────────────────────╯
                                                                                 &lt NUM SPACE           &lt SYM SPACE            &kp RETURN                     &mm_bspc_del             &lt NAV SPACE            MAGIC_SHIFT
 //                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
