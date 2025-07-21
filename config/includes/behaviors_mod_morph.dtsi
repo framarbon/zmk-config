@@ -2,14 +2,14 @@
 
 // Define layer numbers
 #define BASE 0
-#define BASE_QWERTY 1
-#define SYM 2
-#define NAV 3
-#define NUM 4
-#define FUNC 5
-#define KEYB 6
-#define FLASH 7
-#define MOUSE_KEYS 8
+//#define BASE_QWERTY 1
+#define SYM 1
+#define NAV 2
+#define NUM 3
+#define FUNC 4
+#define KEYB 5
+#define FLASH 6
+#define MOUSE_KEYS 7
 
 / {
 
