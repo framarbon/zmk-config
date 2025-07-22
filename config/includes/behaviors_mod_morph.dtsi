@@ -218,7 +218,20 @@
             bindings = <&kp ESCAPE>, <&kp GRAVE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_RSFT)>;
+        };
 
+        /*
+         * Tilde Grave
+         *
+         * Usage: &mm_tilde_grave
+         * Tap: ~
+         * Shift-Tap: `
+         */
+        mm_tilde_grave: mm_tilde_grave {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp TILDE>, <&kp GRAVE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         /*

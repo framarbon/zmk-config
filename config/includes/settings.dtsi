@@ -38,6 +38,7 @@
       LCTRL LALT LGUI LSHFT
       RCTRL RALT RGUI RSHFT
       BACKSPACE
+      COLON SEMICOLON
     >;
     mods = <(MOD_LSFT)>;
     #ifdef HAS_UROB
