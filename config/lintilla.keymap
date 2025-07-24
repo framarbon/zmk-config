@@ -8,11 +8,24 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/mouse.h>
 #include <behaviors/rgbled_widget.dtsi>
 
 // Personal includes
 #define HOST_OS 1
 #include "zmk-helpers/helper.h"
+
+// Set the scroll amount
+#define MOUSE_SCROLL_MAX 100
+
+#undef SCROLL_UP
+#undef SCROLL_DOWN
+#undef SCROLL_LEFT
+#undef SCROLL_RIGHT
+#define SCROLL_UP SCROLL_VERT(MOUSE_SCROLL_MAX)
+#define SCROLL_DOWN SCROLL_VERT(-MOUSE_SCROLL_MAX)
+#define SCROLL_LEFT SCROLL_HOR(-MOUSE_SCROLL_MAX)
+#define SCROLL_RIGHT SCROLL_HOR(MOUSE_SCROLL_MAX)
 
 // Source unicode-chars for desired languages
 #include "zmk-helpers/unicode-chars/german.dtsi"
@@ -67,6 +80,14 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        // Setting behavior for scrolling
+        mouse_wheel: mouse_wheel {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            label = "MOUSE_WHEEL";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+        };
     };
 
     conditional_layers {
@@ -117,7 +138,7 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
                                                                                 &lt NUM SPACE           &lt SYM SPACE            &kp RETURN                     &mm_bspc_del             &lt NAV SPACE            MAGIC_SHIFT
 //                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
       >;
-     //  sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_PREV C_NEXT>;
+    sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &mouse_wheel SCROLL_DOWN SCROLL_UP>;
     };
 
 //    Base_Qwerty_layer {
@@ -186,6 +207,8 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
 //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
 //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
             >;
+     sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &mouse_wheel SCROLL_RIGHT SCROLL_LEFT>;
+
         };
 
         num {
