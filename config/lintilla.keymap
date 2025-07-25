@@ -138,7 +138,8 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
                                                                                 &lt NUM SPACE           &lt SYM SPACE            &kp RETURN                     &mm_bspc_del             &lt NAV SPACE            MAGIC_SHIFT
 //                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
       >;
-    sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &mouse_wheel SCROLL_DOWN SCROLL_UP>;
+    //sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &mouse_wheel SCROLL_DOWN SCROLL_UP>;
+    sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_VOL_DN C_VOL_UP>;
     };
 
 //    Base_Qwerty_layer {
@@ -207,8 +208,8 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
 //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
 //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
             >;
-     sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &mouse_wheel SCROLL_RIGHT SCROLL_LEFT>;
-
+     //sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &mouse_wheel SCROLL_RIGHT SCROLL_LEFT>;
+sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         num {
