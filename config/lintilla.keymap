@@ -16,16 +16,7 @@
 #include "zmk-helpers/helper.h"
 
 // Set the scroll amount
-#define MOUSE_SCROLL_MAX 100
-
-#undef SCROLL_UP
-#undef SCROLL_DOWN
-#undef SCROLL_LEFT
-#undef SCROLL_RIGHT
-#define SCROLL_UP SCROLL_VERT(MOUSE_SCROLL_MAX)
-#define SCROLL_DOWN SCROLL_VERT(-MOUSE_SCROLL_MAX)
-#define SCROLL_LEFT SCROLL_HOR(-MOUSE_SCROLL_MAX)
-#define SCROLL_RIGHT SCROLL_HOR(MOUSE_SCROLL_MAX)
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
 // Source unicode-chars for desired languages
 #include "zmk-helpers/unicode-chars/german.dtsi"
@@ -138,8 +129,7 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
                                                                                 &lt NUM SPACE           &lt SYM SPACE            &kp RETURN                     &mm_bspc_del             &lt NAV SPACE            MAGIC_SHIFT
 //                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
       >;
-    //sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &mouse_wheel SCROLL_DOWN SCROLL_UP>;
-    sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+    sensor-bindings = <&mouse_wheel SCRL_DOWN SCRL_UP>;
     };
 
 //    Base_Qwerty_layer {
@@ -208,8 +198,8 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
 //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
 //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
             >;
-     //sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &mouse_wheel SCROLL_RIGHT SCROLL_LEFT>;
-sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+     //sensor-bindings = <&mouse_wheel SCROLL_RIGHT SCROLL_LEFT>;
+    sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         num {
