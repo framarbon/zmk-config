@@ -18,6 +18,15 @@
 // Set the scroll amount
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
+#undef SCRL_UP
+#undef SCRL_DOWN
+#undef SCRL_LEFT
+#undef SCRL_RIGHT
+#define SCRL_UP MOVE_Y(ZMK_MOUSE_DEFAULT_SCRL_VAL)
+#define SCRL_DOWN MOVE_Y(-ZMK_MOUSE_DEFAULT_SCRL_VAL)
+#define SCRL_LEFT MOVE_X(-ZMK_MOUSE_DEFAULT_SCRL_VAL)
+#define SCRL_RIGHT MOVE_X(ZMK_MOUSE_DEFAULT_SCRL_VAL)
+
 // Source unicode-chars for desired languages
 #include "zmk-helpers/unicode-chars/german.dtsi"
 #include "includes/settings.dtsi"
@@ -52,6 +61,10 @@ ZMK_HOLD_TAP(magic_shift, bindings = <&kp>, <&magic_shift_tap>;
 ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
               mods = <(MOD_LSFT)>;)
 
+//&msc {
+//    time-to-max-speed-ms = <1000>;
+//};
+
 / {
     behaviors {
         bt_key: magic_bluetooth_key {
@@ -78,6 +91,7 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
             label = "MOUSE_WHEEL";
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
+ //           tap-ms = <50>; // or 100
         };
     };
 
@@ -129,7 +143,7 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
                                                                                 &lt NUM SPACE           &lt SYM SPACE            &kp RETURN                     &mm_bspc_del             &lt NAV SPACE            MAGIC_SHIFT
 //                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
       >;
-    sensor-bindings = <&mouse_wheel SCRL_DOWN SCRL_UP>;
+    sensor-bindings = <&mouse_wheel SCRL_UP SCRL_DOWN>;
     };
 
 //    Base_Qwerty_layer {
@@ -172,6 +186,8 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
 //                                     ┗━━━━━━━┫       ┣━━━━━━━┛  ┗━━━━━━━┫       ┣━━━━━━━┛
 //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
             >;
+        sensor-bindings = <&inc_dec_kp PLUS MINUS>;
+
         };
 
         nav {
@@ -199,7 +215,7 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
 //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
             >;
      //sensor-bindings = <&mouse_wheel SCROLL_RIGHT SCROLL_LEFT>;
-    sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+    sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         num {
