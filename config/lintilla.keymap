@@ -16,7 +16,8 @@
 #include "zmk-helpers/helper.h"
 
 // Set the scroll amount
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 100
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 140
+#define ZMK_MOUSE_SCRL_VAL 140
 
 #undef SCRL_UP
 #undef SCRL_DOWN
@@ -91,8 +92,8 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
             label = "MOUSE_WHEEL";
             #sensor-binding-cells = <2>;
             bindings = <&msc>, <&msc>;
- //           tap-ms = <50>; // or 100
-        };
+            tap-ms = <20>;
+            };
     };
 
     conditional_layers {
