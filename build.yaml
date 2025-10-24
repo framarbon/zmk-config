@@ -16,6 +16,10 @@ include:
 
   # Lintilla right will always be a peripheral
   - board: seeeduino_xiao_ble
+    shield: lintilla_right_central rgbled_adapter
+    snippet: studio-rpc-usb-uart
+    artifact-name: lintilla-right-central
+  - board: seeeduino_xiao_ble
     shield: lintilla_right_peripheral rgbled_adapter
     artifact-name: lintilla-right-peripheral
 
