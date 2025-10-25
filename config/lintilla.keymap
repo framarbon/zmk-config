@@ -27,6 +27,7 @@
 #define SCRL_DOWN MOVE_Y(-ZMK_MOUSE_DEFAULT_SCRL_VAL)
 #define SCRL_LEFT MOVE_X(-ZMK_MOUSE_DEFAULT_SCRL_VAL)
 #define SCRL_RIGHT MOVE_X(ZMK_MOUSE_DEFAULT_SCRL_VAL)
+#define HAS_MOUSE_TP
 
 // Source unicode-chars for desired languages
 #include "zmk-helpers/unicode-chars/german.dtsi"
@@ -34,7 +35,16 @@
 #include "includes/behaviors_homerow_mods.dtsi"
 #include "includes/behaviors_mod_morph.dtsi"
 #include "includes/behaviors_other.dtsi"
-#include "includes/mouse_tp.dtsi"
+#ifdef HAS_MOUSE_TP
+  // We store the trackpoint settings in a separate file
+  // to make organization a little easier.
+  #include "includes/mouse_tp.dtsi"
+#endif  // HAS_MOUSE_TP
+#ifdef HAS_MOUSE_TP
+  #define U_TOG_TP_SET &tog MOUSE_TP_SET
+#else
+  #define U_TOG_TP_SET &none
+#endif  // HAS_MOUSE_TP
 
 // Multiple mods
 #define GS(key) &kp LG(LS(key))
@@ -320,16 +330,47 @@ ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHFT>, <&caps_word>;
 //                                             ┗━━━━━━━┛                  ┗━━━━━━━┛
             >;
         };
+#ifdef HAS_MOUSE_TP
 
+        // Automatically activated when the mouse or trackpoint moves.
+        // Configured in `include/mouse_tp.dtsi`.
+        MouseTP_layer {
+        display-name = "TP";
+        bindings = <
+
+//                              ╭────────────────────────╮                                                                                                                                                                                                            ╭────────────────────────╮
+                                 &trans                                                                                                                                                                                                                               &trans                                            
+//     ╭────────────────────────┼────────────────────────┼────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮    ╭────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┼────────────────────────┼────────────────────────╮
+        U_TOG_TP_SET             U_TOG_TP_SET             &trans                   &trans                   &msc SCRL_UP             &trans                        &trans                   &trans                   &trans                   &trans                   U_TOG_TP_SET              U_TOG_TP_SET
+    // ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
+        &trans                   &trans                   &trans                   &trans                   &trans                   &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
+    // ╰────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
+                                 &trans                   &trans                   &trans                   &msc SCRL_DOWN           &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
+    //                          ╰────────────────────────┴────────────────────────┴────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┴────────────────────────┼────────────────────────╯
+                                                                                    &mkp MCLK                &mkp LCLK                &mkp RCLK                     &mkp MCLK                &mkp LCLK                &mkp RCLK
+    //                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
+        >;
+        };
+
+        // You can find the defines for the actual key press behaviors in `include/mouse_tp.dtsi`.
+        MouseSettings_layer {
+        display-name = "TP Set";
+        bindings = <
+//                              ╭────────────────────────╮                                                                                                                                                                                                            ╭────────────────────────╮
+                                 &trans                                                                                                                                                                                                                               &trans                                            
+//     ╭────────────────────────┼────────────────────────┼────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮    ╭────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┼────────────────────────┼────────────────────────╮
+        U_TOG_TP_SET             U_TOG_TP_SET             &none                    U_MSS_TP_S_D             U_MSS_TP_S_I             U_MSS_TP_PT_I                 U_MSS_TP_PT_I            U_MSS_TP_S_D             U_MSS_TP_S_I             &none                    U_TOG_TP_SET              U_TOG_TP_SET
+    // ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
+        U_MSS_RESET              U_MSS_RESET              &none                    U_MSS_TP_NI_D            U_MSS_TP_NI_I            U_MSS_TP_PT_D                 U_MSS_TP_PT_D            U_MSS_TP_NI_D            U_MSS_TP_NI_I            &none                    U_MSS_RESET               U_MSS_RESET
+    // ╰────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
+                                 U_MSS_LOG                &none                    U_MSS_TP_V6_D            U_MSS_TP_V6_I            &none                         &none                    U_MSS_TP_V6_D            U_MSS_TP_V6_I            &none                    U_MSS_LOG                 U_MSS_LOG
+    //                          ╰────────────────────────┴────────────────────────┴────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┴────────────────────────┼────────────────────────╯
+                                                                                    &trans                   &mkp LCLK                &mkp RCLK                     &none                    &mkp LCLK                &mkp RCLK
+    //                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
+        >;
+        };
+#endif
         // Extra empty layers for ZMK Studio
-
-        layer8 {
-            status = "reserved";
-        };
-
-        layer9 {
-            status = "reserved";
-        };
 
         layer10 {
             status = "reserved";

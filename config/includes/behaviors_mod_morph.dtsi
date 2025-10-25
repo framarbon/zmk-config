@@ -2,15 +2,16 @@
 
 // Define layer numbers
 #define BASE 0
-//#define BASE_QWERTY 1
 #define SYM 1
 #define NAV 2
 #define NUM 3
 #define FUNC 4
 #define KEYB 5
 #define FLASH 6
-#define MOUSE_KEYS 7
-
+#ifdef HAS_MOUSE_TP
+#define MOUSE_TP 7
+#define MOUSE_TP_SET 8
+#endif
 / {
 
     behaviors {
