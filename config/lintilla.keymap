@@ -34,6 +34,7 @@
 #include "includes/behaviors_homerow_mods.dtsi"
 #include "includes/behaviors_mod_morph.dtsi"
 #include "includes/behaviors_other.dtsi"
+#include "includes/mouse_tp.dtsi"
 
 // Multiple mods
 #define GS(key) &kp LG(LS(key))
