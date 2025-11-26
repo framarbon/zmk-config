@@ -81,11 +81,12 @@
         mm_bspc_del_layer: bspc_del_layer {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            #ifdef HAS_MOUSE_TP
-                bindings = <&lt MOUSE_TP BSPC>, <&kp DEL>;
-            #else
+        //  #ifdef HAS_MOUSE_TP
+        //      bindings = <&lt MOUSE_TP BSPC>, <&kp DEL>;
+        //  #else
+        //
                 bindings = <&lt NAV BSPC>, <&kp DEL>;
-            #endif
+        //  #endif
             mods = <(MOD_LALT|MOD_RALT)>;
         };
 
