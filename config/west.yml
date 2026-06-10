@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/framarbon
     - name: caksoylar # <-- and this for the LED
       url-base: https://github.com/caksoylar
+    - name: englmaxi # <-- if you want a dongle
+      url-base: https://github.com/englmaxi
     - name: urob
       url-base: https://github.com/urob
     - name: infused-kim
@@ -33,6 +35,9 @@ manifest:
       revision: zmk
     - name: zmk-rgbled-widget # <-- and this for the LED
       remote: caksoylar
+      revision: main
+    - name: zmk-dongle-display
+      remote: englmaxi
       revision: main
     # Module for PS/2 mouse & TP driver
     - name: kb_zmk_ps2_mouse_trackpoint_driver
