@@ -76,6 +76,8 @@
 
     &mouse_ps2_input_listener {
 
+      /delete-property/ tp-press-to-select;
+
       // Adjust pointing device axes.
       // This adjusts the values inside the zmk driver. Some
       // trackpoints also allow you to adjust it in their firmware. Check
@@ -120,7 +122,7 @@
 
       // Enable clicking by tapping on the TP.
       // Not all TPs support this.
-      // tp-press-to-select;
+      tp-press-to-select;
       // tp-press-to-select-threshold = <10>;
 
 
