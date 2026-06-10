@@ -98,12 +98,12 @@
     &mouse_ps2 {
 
       // How sensitive the TP is (Default: 128)
-      // tp-sensitivity = <160>;
+      tp-sensitivity = <250>;
 
 
       // The maximum mouse movement speed the TP will accelarate to
       // (Default: 97)
-      // tp-val6-upper-speed = <140>;
+      tp-val6-upper-speed = <400>;
 
 
       // Negative Inertia (Default: 6)
