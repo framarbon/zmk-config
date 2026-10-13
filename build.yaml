@@ -1,9 +1,9 @@
 include:
   # Lintilla Dongle (optional)
-  - board: nice_nano//zmk
-    shield: lintilla_dongle dongle_display 
-    snippet: studio-rpc-usb-uart
-    artifact-name: lintilla-dongle
+  # - board: nice_nano//zmk
+  #   shield: lintilla_dongle dongle_display 
+  #   snippet: studio-rpc-usb-uart
+  #   artifact-name: lintilla-dongle
 
   # Lintilla left can either be a central (no dongle) or peripheral (with dongle)
   - board: xiao_ble//zmk
