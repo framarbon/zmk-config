@@ -14,11 +14,12 @@ include:
     shield: lintilla_left_peripheral rgbled_adapter
     artifact-name: lintilla-left-peripheral
 
-  # Lintilla right will always be a peripheral
+  # Lintilla right can have a trackpoint or be a peripheral
   - board: xiao_ble//zmk
     shield: lintilla_right_central rgbled_adapter
     snippet: studio-rpc-usb-uart
     artifact-name: lintilla-right-central
+    snippet: zmk-usb-logging
   - board: xiao_ble//zmk
     shield: lintilla_right_peripheral rgbled_adapter
     artifact-name: lintilla-right-peripheral
